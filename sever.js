@@ -1,7 +1,16 @@
-import app from './src/app.js'
+const express = require('express');
+const entregaRota = require ('./rotas/entregas_rotas')
 
-const port = process.env.PORT || 3000;
+const app = express();
+const port = 3000;
 
+app.use(express.json());
+
+app.get('/',(req,res) => {
+    res.status(200).send('Bem Vindo ao sistema de entregas');
+})
+
+app.use('/entregas', entregaRota)
 
 
 app.listen(port, () => {
